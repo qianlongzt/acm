@@ -6,29 +6,40 @@ int main() {
 		if(0 == a && 0 == b && 0 == n) {
 			return 0;
 		}
-		int num[50] = {1, 1};
+		int num[51] = {1, 1};
 		int i, start = 0, loop = 0;
 		a %= 7;
 		b %= 7;
-		for(i = 2; i < 50; i++) {
+		
+		for(i = 2; i < 51; i++) {
 			num[i] = (a*num[i-1] + b*num[i-2]) % 7;
 		}
-		for(i = 49; i >= 2; i--) {
-			if(num[i - 2] == num[48] && num[i - 1] == num[49])  {
-				loop = 50 - i;
+
+		for(i = 2; i < 51; i++) {
+			if(num[i] == num[0] && num[i + 1] == num[1]) {
+				start = 1;
+				loop = i;
 				break;
 			}
 		}
-		for(i = 0; i <= 48; i ++) {
-			if(num[i] == num[48] && 0 == (48 - i) % loop) {
-				start = i;
-				break;
+		if(loop == 0) {
+			for(i = 2; i < 51; i++) {
+				if(num[i] == num[1] && num[i + 1] == num[2]){
+					start = 2;
+					loop = i - 1;
+					break;
+				}
 			}
 		}
-		for(i = 0; i < 50; i++) {
-			printf("%d ", num[i]);
+		if(loop == 0) {
+			start = 3;
+			loop = 1;
 		}
-		printf("\nstart %d loop %d\n", start, loop);
+//		for(i = 0; i < 51; i++) {
+//			printf("%d ", num[i]);
+//		}
+//		printf("\nstart %d loop %d\n", start, loop);
+//		
 		if(n < start) {
 			printf("%d\n", num[n - 1]);
 		} else {

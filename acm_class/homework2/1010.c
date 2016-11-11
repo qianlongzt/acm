@@ -2,27 +2,19 @@
 #include <math.h>
 
 int main() {
-	int a, b, sum, flag;
-	double da, db, dsum;
-	while(scanf("%d%d", &a, &b) ) {
+	int b;
+	double a, sum;
+	while(scanf("%lf%d", &a, &b) != EOF) {
 		sum = 0;
-		dsum = 0.0; 
-		flag = 1;
 		while(b --) {
-			if(flag) {
-				sum += a;
-			} else {
-				dsum += da;
-			}
-			da = sqrt(a);
-			if(da == a) {
-				flag = 1;
-				a = da; 
-			} else {
-				flag = 0;
+			sum += a;
+			a = sqrt(a);
+			if(a < 1.00001) {
+				sum += b;
+				break;
 			}
 		}
-		printf("%.2f\n", sum + dsum);
+		printf("%.2f\n", sum);
 	}
 	return 0; 
 }
