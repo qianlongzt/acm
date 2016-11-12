@@ -51,12 +51,12 @@ int main() {
 				}
 			}
 			lastMax = maxPrice;
-		}		
+		}
+		
 		
 		tmp = times;
 		int id;
-		while(money>0) {
-			
+		while(money>0 && tmp > 0) {
 			id = sort[times - tmp];
 			if(money >= room[id][1] ) {
 				buy += room[id][0];
