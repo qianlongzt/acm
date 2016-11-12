@@ -13,26 +13,15 @@ int main() {
 		}
 		max = 0;
 		
-		int i = cases, j, k, flag;
+		int i = cases, k;
 		while(i --) {
 			scanf("%d%d", &a, &b);
-			flag = 1;//no moved
-			if(cases - i > 1) {
-				for(j = 0; j < cases - i - 1; j++) {
-					if(room[j][0] == a && room[j][1] == b) {
-						flag = 0;
-						break;
-					}
-				}
-			}
-			if(flag) {
-				room[cases - i - 1][0] =  a;
-				room[cases - i - 1][1] =  b;
-				a = (a - 1) /2;
-				b = (b - 1) /2;
-				for(k = a; k <= b; k++) {
-					corridor[k] += 1;
-				}
+			room[cases - i - 1][0] =  a;
+			room[cases - i - 1][1] =  b;
+			a = (a - 1) /2;
+			b = (b - 1) /2;
+			for(k = a; k <= b; k++) {
+				corridor[k] += 1;
 			}
 		
 		}
